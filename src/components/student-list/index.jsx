@@ -33,7 +33,7 @@ const StudentList = ({ onRowClick }) => {
         </div>
       ) : (
         <div className="d-flex flex-column gap-5 justify-content-center align-items-center overflow-auto">
-          <div className="d-flex position-relative w-100  gap-10 justify-content-center align-items-center mt-3">
+          <div className="d-flex position-relative w-100 justify-content-center align-items-center mt-3">
             <div>
               <p className="mb-0 fs-3 fw-bold">Student List</p>
             </div>
