@@ -6,6 +6,7 @@ import { useState } from "react";
 const index = () => {
   const [isBook, setIsBook] = useState(true);
   const [selectedStudent, setSelectedStudent] = useState(null);
+  const [show , setShow] = useState(true)
 
   return (
     <div className="p-5 d-flex flex-column">
@@ -34,9 +35,9 @@ const index = () => {
       <div>
         {!selectedStudent ? (
           isBook ? (
-            <BookList />
+            <BookList show ={show} setShow={setShow} />
           ) : (
-            <StudentList onRowClick={(e) => setSelectedStudent(e)} />
+            <StudentList onRowClick={(e) => setSelectedStudent(e)} show ={show} setShow={setShow}/>
           )
         ) : (
           <StudentDetail student={selectedStudent} />

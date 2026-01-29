@@ -8,12 +8,8 @@ import {
 } from "../../utils/AppConst.js";
 import { useState } from "react";
 
-const StudentList = ({onRowClick}) => {
+const StudentList = ({ onRowClick,show,setShow }) => {
   const [currentPage, setCurrentPage] = useState(0);
-
-  const handlePageClick = (selectedPage) => {
-    setCurrentPage(selectedPage.selected);
-  };
 
   const itemsPerPage = STUDENTS_PER_PAGE;
   const startingIndex = currentPage * itemsPerPage;
@@ -24,40 +20,56 @@ const StudentList = ({onRowClick}) => {
 
   const pageCount = Math.ceil(studentData.length / itemsPerPage);
 
+  const handlePageClick = (selectedPage) => {
+    setCurrentPage(selectedPage.selected);
+  };
+
   return (
-    <div className="d-flex flex-column gap-5 justify-content-center align-items-center overflow-auto">
-      <Table caption={"Student List"} columns = {[
-         { label: "Student ID", field: "id" },
-          { label: "Student Name", field: "name" },
-          { label: "Student age", field: "age" },
-      ]}
-       data={currentStudents}
-       isBook={false}
-       onRowClick={onRowClick}
-        />
-       
-<div>
-      <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={MARGIN_PAGE_DISPLAYED}
-        pageRangeDisplayed={PAGE_RANGE_DISPLAYED}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        previousClassName={"page-item"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        breakClassName={"page-item"}
-        breakLinkClassName={"page-link"}
-        activeClassName={"active"}
-      />
-      </div>
-    </div>
+    <>
+      {studentData.length === 0 ? (
+        <div className="mt-5 border rounded p-4 mx-auto  max-wid-400  d-flex flex-column justify-content-center align-items-center">
+          <p className="fs-2 fw-bold">No Students</p>
+        </div>
+      ) : (
+        <div className="d-flex flex-column gap-5 justify-content-center align-items-center overflow-auto">
+          <Table
+            caption={"Student List"}
+            columns={[
+              { label: "Student ID", field: "id" },
+              { label: "Student Name", field: "name" },
+              { label: "Student age", field: "age" },
+            ]}
+            data={currentStudents}
+            isBook={false}
+            onRowClick={onRowClick}
+            show={show}
+            setShow={setShow}
+          />
+
+          <div>
+            <ReactPaginate
+              previousLabel={"Previous"}
+              nextLabel={"Next"}
+              breakLabel={"..."}
+              pageCount={pageCount}
+              marginPagesDisplayed={MARGIN_PAGE_DISPLAYED}
+              pageRangeDisplayed={PAGE_RANGE_DISPLAYED}
+              onPageChange={handlePageClick}
+              containerClassName={"pagination"}
+              pageClassName={"page-item"}
+              pageLinkClassName={"page-link"}
+              previousClassName={"page-item"}
+              previousLinkClassName={"page-link"}
+              nextClassName={"page-item"}
+              nextLinkClassName={"page-link"}
+              breakClassName={"page-item"}
+              breakLinkClassName={"page-link"}
+              activeClassName={"active"}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
