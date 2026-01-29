@@ -1,4 +1,6 @@
 import "./table.css";
+import { Link } from "react-router-dom";
+import {ROUTES} from "../../constants/routes.js"
 const index = ({ columns, data, isBook, onRowClick }) => {
   return (
     <>
@@ -17,8 +19,8 @@ const index = ({ columns, data, isBook, onRowClick }) => {
             return (
               <tr
                 key={e?.id}
-                role={isBook ? undefined : "button"}
-                onClick={isBook ? undefined : () => onRowClick && onRowClick(e)}
+                // role={isBook ? undefined : "button"}
+                // onClick={isBook ? undefined : () => onRowClick && onRowClick(e)}
               >
                 <th className="width-33">{e?.id}</th>
                 <td className="width-33">{e?.title}</td>
@@ -26,6 +28,10 @@ const index = ({ columns, data, isBook, onRowClick }) => {
                   <td className="width-33">{e?.author}</td>
                 ) : (
                   <td className="width-33">{e?.age}</td>
+                )}
+                {!isBook && (
+                 <td><Link className="text-text-decoration-none" to={`${ROUTES.STUDENT_DETAIL}/${e?.id}`}><button className="btn btn-primary px-2 py-1">View</button></Link></td>
+                  
                 )}
               </tr>
             );

@@ -1,11 +1,11 @@
-import Table from "../table/index.jsx";
+import Table from "../../components/table/index.jsx";
 import studentData from "../../data/studentsList.json";
 import ReactPaginate from "react-paginate";
 import {
   STUDENTS_PER_PAGE,
   MARGIN_PAGE_DISPLAYED,
   PAGE_RANGE_DISPLAYED,
-} from "../../utils/AppConst.js";
+} from "../../constants/AppConst.js";
 import { useState } from "react";
 
 const StudentList = ({ onRowClick }) => {
@@ -28,11 +28,11 @@ const StudentList = ({ onRowClick }) => {
   return (
     <>
       {studentData.length === 0 ? (
-        <div className="mt-5 border rounded p-4 mx-auto  max-wid-400  d-flex flex-column justify-content-center align-items-center">
+        <div className="mt-5 border rounded p-4 mx-auto  max-wid-400  d-flex flex-column justify-content-center align-items-center ">
           <p className="fs-2 fw-bold">No Students</p>
         </div>
       ) : (
-        <div className="d-flex flex-column gap-5 justify-content-center align-items-center overflow-auto">
+        <div className="d-flex flex-column gap-5 justify-content-center align-items-center overflow-auto  m-5 border p-3">
           <div className="d-flex position-relative w-100 justify-content-center align-items-center mt-3">
             <div>
               <p className="mb-0 fs-3 fw-bold">Student List</p>
@@ -55,6 +55,7 @@ const StudentList = ({ onRowClick }) => {
                   { label: "Student ID", field: "id" },
                   { label: "Student Name", field: "name" },
                   { label: "Student age", field: "age" },
+                  { label: "Action", field: "action" },
                 ]}
                 data={currentStudents}
                 isBook={false}

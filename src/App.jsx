@@ -1,10 +1,6 @@
-import Dashboard from "./pages/dashboard/index.jsx"
+import AppRoutes from "./router/AppRoutes.jsx";
 function App() {
-  return (
-    <>
-        <Dashboard/>
-    </>
-  );
+  return <AppRoutes />;
 }
 
 export default App;

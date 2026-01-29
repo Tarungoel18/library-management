@@ -1,5 +1,9 @@
 import "./student.css"
-const Index = ({student}) => {
+import studentData from "../../data/studentsList.json";
+import { useParams } from "react-router-dom";
+const Index = () => {
+  const {id} = useParams();
+  const student = studentData[id-1];
   return (
     <div className="container mt-4">
       <p className="text-center fs-3 fw-bold mb-4">Student Details</p>

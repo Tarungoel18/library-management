@@ -1,11 +1,11 @@
-import Table from "../table/index.jsx";
+import Table from "../../components/table/index.jsx";
 import bookData from "../../data/bookslist.json";
 import ReactPaginate from "react-paginate";
 import {
   BOOKS_PER_PAGE,
   MARGIN_PAGE_DISPLAYED,
   PAGE_RANGE_DISPLAYED,
-} from "../../utils/AppConst.js";
+} from "../../constants/AppConst.js";
 import { useState } from "react";
 const index = ({}) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -29,7 +29,7 @@ const index = ({}) => {
           <p className="fs-2 fw-bold">No Books</p>
         </div>
       ) : (
-        <div className="d-flex flex-column gap-5 justify-content-center align-items-center overflow-auto">
+        <div className="d-flex flex-column gap-5 justify-content-center align-items-center overflow-auto m-5 border p-3">
           <div className="d-flex position-relative w-100  justify-content-center align-items-center mt-3">
             <div>
               <p className="mb-0 fs-3 fw-bold">Book List</p>
