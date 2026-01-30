@@ -1,9 +1,9 @@
 import { Routes, Route , Navigate} from "react-router-dom";
-import BookList from "../pages/book-list/index.jsx";
-import StudentList from "../pages/student-list/index.jsx";
+import BookList from "../pages/book-list/Index.jsx";
+import StudentList from "../pages/student-list/Index.jsx";
 import AppLayout from "../layout/AppLayout.jsx";
-import StudentDetail from "../pages/student-detail/index.jsx";
-import NotFound from "../pages/not-found/index.jsx";
+import StudentDetail from "../pages/student-detail/Index.jsx";
+import NotFound from "../pages/not-found/Index.jsx";
 import { ROUTES } from "../constants/routes.js";
 const AppRoutes = () => {
   return (

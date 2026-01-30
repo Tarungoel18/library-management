@@ -1,4 +1,4 @@
-import Table from "../../components/table/index.jsx";
+import Table from "../../components/table/Index.jsx";
 import studentData from "../../data/studentsList.json";
 import ReactPaginate from "react-paginate";
 import {
@@ -47,7 +47,7 @@ const StudentList = ({ onRowClick }) => {
             </div>
           </div>
 
-          {show ? (
+          {show && (
             <>
               {" "}
               <Table
@@ -83,8 +83,6 @@ const StudentList = ({ onRowClick }) => {
                 />
               </div>
             </>
-          ) : (
-            <></>
           )}
         </div>
       )}

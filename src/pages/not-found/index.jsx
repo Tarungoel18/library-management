@@ -1,5 +1,5 @@
 import "./not-found.css";
-const index = () => {
+const Index = () => {
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100">
       <div className="d-flex flex-column justify-content-center align-items-center border border-black height-75-vh width-50-vw">
@@ -16,4 +16,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

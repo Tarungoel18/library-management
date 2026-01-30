@@ -1,7 +1,7 @@
 import "./table.css";
 import { Link } from "react-router-dom";
 import {ROUTES} from "../../constants/routes.js"
-const index = ({ columns, data, isBook, onRowClick }) => {
+const Index = ({ columns, data, isBook}) => {
   return (
     <>
       <table className="table table-hover caption-top mb-0 ">
@@ -19,8 +19,6 @@ const index = ({ columns, data, isBook, onRowClick }) => {
             return (
               <tr
                 key={e?.id}
-                // role={isBook ? undefined : "button"}
-                // onClick={isBook ? undefined : () => onRowClick && onRowClick(e)}
               >
                 <th className="width-33">{e?.id}</th>
                 <td className="width-33">{e?.title}</td>
@@ -42,4 +40,4 @@ const index = ({ columns, data, isBook, onRowClick }) => {
   );
 };
 
-export default index;
+export default Index;

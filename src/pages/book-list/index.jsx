@@ -1,4 +1,4 @@
-import Table from "../../components/table/index.jsx";
+import Table from "../../components/table/Index.jsx";
 import bookData from "../../data/bookslist.json";
 import ReactPaginate from "react-paginate";
 import {
@@ -7,7 +7,7 @@ import {
   PAGE_RANGE_DISPLAYED,
 } from "../../constants/AppConst.js";
 import { useState } from "react";
-const index = ({}) => {
+const Index = ({}) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [show, setShow] = useState(true);
 
@@ -44,7 +44,7 @@ const index = ({}) => {
             </div>
           </div>
 
-          {show ? (
+          {show && (
             <>
               <Table
                 columns={[
@@ -77,8 +77,6 @@ const index = ({}) => {
                 />
               </div>
             </>
-          ) : (
-            <></>
           )}
         </div>
       )}
@@ -86,4 +84,4 @@ const index = ({}) => {
   );
 };
 
-export default index;
+export default Index;
