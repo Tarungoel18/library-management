@@ -30,7 +30,7 @@ const index = ({ columns, data, isBook, onRowClick }) => {
                   <td className="width-33">{e?.age}</td>
                 )}
                 {!isBook && (
-                 <td><Link className="text-text-decoration-none" to={`${ROUTES.STUDENT_DETAIL}/${e?.id}`}><button className="btn btn-primary px-2 py-1">View</button></Link></td>
+                 <td><Link className="text-text-decoration-none" to={`${ROUTES.STUDENT}/${e?.id}`}><button className="btn btn-primary px-2 py-1">View</button></Link></td>
                   
                 )}
               </tr>

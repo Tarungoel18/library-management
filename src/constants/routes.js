@@ -1,6 +1,5 @@
 export const ROUTES = {
-  BOOK: "/book",
-  STUDENT: "/student",
-  DASHBOARD: "/dashboard",
-  STUDENT_DETAIL : "/student-detail"
+  BOOK: "/book-list",
+  STUDENT: "/student-list",
+  ALL_STUDENTS: "/all-students"
 };
