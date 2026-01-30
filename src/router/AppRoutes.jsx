@@ -7,6 +7,7 @@ const BookList = lazy(() => import("../pages/book-list/Index.jsx"));
 const StudentList = lazy(() => import("../pages/student-list/Index.jsx"));
 const StudentDetail = lazy(() => import("../pages/student-detail/Index.jsx"));
 const NotFound = lazy(() => import("../pages/not-found/Index.jsx"));
+const BookDetails = lazy(() => import("../pages/book-details/Index.jsx"))
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
             element={<Navigate to={ROUTES.STUDENT} replace />}
           />
         </Route>
+          <Route path={ROUTES.BOOK_DETAILS} element={<BookDetails/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
