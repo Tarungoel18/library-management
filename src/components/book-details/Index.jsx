@@ -1,9 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useReducer } from "react";
 import "./book-details.css";
 const Index = ({ setBooks }) => {
   const [formData, setFormData] = useState({
     id: "",
-    name: "",
     author: "",
   });
   const [touched, setTouched] = useState({
@@ -12,31 +11,61 @@ const Index = ({ setBooks }) => {
     author: false,
   });
 
-  const [isFormValid, setIsFormValid] = useState(false);
-  let timer = useRef(null);
-
-  useEffect(() => {
-  return () => {
-    if (timer.current) {
-      clearTimeout(timer.current);
+  const nameReducer = (state, action) => {
+    switch (action.type) {
+      case "SET_NAME":
+        return action.payload;
+      case "RESET":
+        return "";
+      default:
+        return state;
     }
   };
-}, []);
+
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [bookName, dispatchBookName] = useReducer(nameReducer, "");
+  const timer = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+    };
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBook = {
       id: formData.id,
-      title: formData.name,
+      title: bookName,
       author: formData.author,
     };
     setBooks((prev) => [...prev, newBook]);
-    setFormData({ id: "", name: "", author: "" });
+    dispatchBookName({ type: "RESET" });
+    setFormData({ id: "", author: "" });
     setTouched({ id: false, name: false, author: false });
   };
 
   const handleBlur = (field) => {
     setTouched((prev) => ({ ...prev, [field]: true }));
+  };
+
+  const handleNameChange = (e) => {
+    const value = e.target.value;
+    dispatchBookName({ type: "SET_NAME", payload: value });
+
+    if (timer.current) clearTimeout(timer.current);
+
+    timer.current = setTimeout(() => {
+      const valid =
+        formData.id.trim() !== "" &&
+        Number(formData.id) >= 0 &&
+        value.trim().length >= 3 &&
+        formData.author.trim().length >= 3;
+
+      setIsFormValid(valid);
+    }, 500);
   };
 
   const handleChange = (e) => {
@@ -50,7 +79,7 @@ const Index = ({ setBooks }) => {
       const valid =
         newFormData.id.trim() !== "" &&
         Number(newFormData.id) >= 0 &&
-        newFormData.name.trim().length >= 3 &&
+        bookName.trim().length >= 3 &&
         newFormData.author.trim().length >= 3;
 
       setIsFormValid(valid);
@@ -95,14 +124,14 @@ const Index = ({ setBooks }) => {
               type="text"
               name="name"
               className="form-control"
-              value={formData.name}
-              onChange={handleChange}
+              value={bookName}
+              onChange={handleNameChange}
               onBlur={() => handleBlur("name")}
             />
             {touched.name &&
-              (!formData.name ? (
+              (!bookName ? (
                 <div className="text-danger">Book Name is required</div>
-              ) : formData.name.length < 3 ? (
+              ) : bookName.length < 3 ? (
                 <div className="text-danger">
                   Book Name must be at least 3 characters
                 </div>
