@@ -8,7 +8,7 @@ const StudentDetail = lazy(() => import("../pages/student-detail/Index.jsx"));
 const NotFound = lazy(() => import("../pages/not-found/Index.jsx"));
 const BookPage = lazy(() => import("../pages/book-page/Index.jsx"));
 const UserList = lazy(() => import("../pages/user-list/index.jsx"));
-
+const Practice = lazy(() => import("../pages/practice/index.jsx"))
 //TODO-> Add a Home Page
 
 const AppRoutes = () => {
@@ -27,6 +27,7 @@ const AppRoutes = () => {
           />
         </Route>
         <Route path={ROUTES.USER_LIST} element={<UserList />} />
+        <Route path={ROUTES.PRACTICE} element={<Practice />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
