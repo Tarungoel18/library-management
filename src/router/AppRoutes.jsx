@@ -6,7 +6,10 @@ import { ROUTES } from "../constants/routes.js";
 const StudentList = lazy(() => import("../pages/student-list/Index.jsx"));
 const StudentDetail = lazy(() => import("../pages/student-detail/Index.jsx"));
 const NotFound = lazy(() => import("../pages/not-found/Index.jsx"));
-const BookPage = lazy(() => import("../pages/book-page/Index.jsx"))
+const BookPage = lazy(() => import("../pages/book-page/Index.jsx"));
+const UserList = lazy(() => import("../pages/user-list/index.jsx"));
+
+//TODO-> Add a Home Page
 
 const AppRoutes = () => {
   return (
@@ -23,6 +26,7 @@ const AppRoutes = () => {
             element={<Navigate to={ROUTES.STUDENT} replace />}
           />
         </Route>
+        <Route path={ROUTES.USER_LIST} element={<UserList />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>

@@ -71,6 +71,8 @@ const Index = () => {
     }, 500);
   };
 
+  //TODO :- Common Fun for validation
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     const newFormData = { ...formData, [name]: value };
