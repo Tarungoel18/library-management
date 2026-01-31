@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./book-details.css"
-const Index = () => {
+import bookList from "../../data/bookslist.json";
+const Index = ({setBooks}) => {
   const [formData, setFormData] = useState({
     id: "",
     name: "",
@@ -12,10 +13,16 @@ const Index = () => {
     author: false,
   });
 
-  const isFormValid = formData.id && formData.name && formData.author;
-
+  const isFormValid = formData.id.trim() && formData.name.trim() && formData.author.trim();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newBook = {
+        id:formData.id,
+        title:formData.name,
+        author:formData.author
+    }
+    setBooks((prev) => [...prev,newBook]);
     setFormData({ id: "", name: "", author: "" });
     setTouched({ id: false, name: false, author: false });
   };

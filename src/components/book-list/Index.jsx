@@ -1,4 +1,4 @@
-import Table from "../../components/table/Index.jsx";
+import Table from "../table/Index.jsx";
 import bookData from "../../data/bookslist.json";
 import ReactPaginate from "react-paginate";
 import {
@@ -7,24 +7,24 @@ import {
   PAGE_RANGE_DISPLAYED,
 } from "../../constants/AppConst.js";
 import { useState } from "react";
-const Index = ({}) => {
+const Index = ({books}) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [show, setShow] = useState(true);
 
   const itemsPerPage = BOOKS_PER_PAGE;
   const startingIndex = currentPage * itemsPerPage;
-  const currentBooks = bookData.slice(
+  const currentBooks = books.slice(
     startingIndex,
     startingIndex + itemsPerPage,
   );
-  const pageCount = Math.ceil(bookData.length / itemsPerPage);
+  const pageCount = Math.ceil(books.length / itemsPerPage);
 
   const handlePageClick = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
   };
   return (
     <>
-      {bookData.length === 0 ? (
+      {books.length === 0 ? (
         <div className="mt-5 border rounded p-4 mx-auto  max-wid-400  d-flex flex-column justify-content-center align-items-center">
           <p className="fs-2 fw-bold">No Books</p>
         </div>
