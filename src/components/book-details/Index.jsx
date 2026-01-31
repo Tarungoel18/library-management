@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useRef } from "react";
 import "./book-details.css";
 const Index = ({ setBooks }) => {
   const [formData, setFormData] = useState({
@@ -12,11 +12,8 @@ const Index = ({ setBooks }) => {
     author: false,
   });
 
-  const isFormValid =
-    formData.id.trim() !== "" &&
-    Number(formData.id) >= 0 &&
-    formData.name.trim().length >= 3 &&
-    formData.author.trim().length >= 3;
+  const[isFormValid , setIsFormValid] = useState(false);
+   let timer = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +33,20 @@ const Index = ({ setBooks }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+     const newFormData = { ...formData, [name]: value };
+  setFormData(newFormData);
+    if(timer.current){
+      clearTimeout(timer.current)
+    }
+    timer.current = setTimeout(() => {
+      const valid =
+        newFormData.id.trim() !== "" &&
+        Number(newFormData.id) >= 0 &&
+        newFormData.name.trim().length >= 3 &&
+        newFormData.author.trim().length >= 3;
+
+      setIsFormValid(valid);
+    },500)
   };
 
   return (
