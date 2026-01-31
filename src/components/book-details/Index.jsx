@@ -1,4 +1,4 @@
-import { useState , useRef } from "react";
+import { useState, useRef } from "react";
 import "./book-details.css";
 const Index = ({ setBooks }) => {
   const [formData, setFormData] = useState({
@@ -12,8 +12,16 @@ const Index = ({ setBooks }) => {
     author: false,
   });
 
-  const[isFormValid , setIsFormValid] = useState(false);
-   let timer = useRef(null);
+  const [isFormValid, setIsFormValid] = useState(false);
+  let timer = useRef(null);
+
+  useEffect(() => {
+  return () => {
+    if (timer.current) {
+      clearTimeout(timer.current);
+    }
+  };
+}, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,10 +41,10 @@ const Index = ({ setBooks }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-     const newFormData = { ...formData, [name]: value };
-  setFormData(newFormData);
-    if(timer.current){
-      clearTimeout(timer.current)
+    const newFormData = { ...formData, [name]: value };
+    setFormData(newFormData);
+    if (timer.current) {
+      clearTimeout(timer.current);
     }
     timer.current = setTimeout(() => {
       const valid =
@@ -46,7 +54,7 @@ const Index = ({ setBooks }) => {
         newFormData.author.trim().length >= 3;
 
       setIsFormValid(valid);
-    },500)
+    }, 500);
   };
 
   return (
