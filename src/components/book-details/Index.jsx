@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect, useReducer } from "react";
+import { useDispatch } from "react-redux";
 import "./book-details.css";
-const Index = ({ setBooks }) => {
+import { addBook } from "../../redux/slice/bookSlice.js";
+const Index = () => {
   const [formData, setFormData] = useState({
     id: "",
     author: "",
@@ -24,6 +26,7 @@ const Index = ({ setBooks }) => {
 
   const [isFormValid, setIsFormValid] = useState(false);
   const [bookName, dispatchBookName] = useReducer(nameReducer, "");
+  const dispatch = useDispatch()
   const timer = useRef(null);
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const Index = ({ setBooks }) => {
       title: bookName,
       author: formData.author,
     };
-    setBooks((prev) => [...prev, newBook]);
+    dispatch(addBook(newBook));
     dispatchBookName({ type: "RESET" });
     setFormData({ id: "", author: "" });
     setTouched({ id: false, name: false, author: false });

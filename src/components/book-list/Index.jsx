@@ -1,5 +1,4 @@
 import Table from "../table/Index.jsx";
-import bookData from "../../data/bookslist.json";
 import ReactPaginate from "react-paginate";
 import {
   BOOKS_PER_PAGE,
@@ -7,16 +6,15 @@ import {
   PAGE_RANGE_DISPLAYED,
 } from "../../constants/AppConst.js";
 import { useState } from "react";
-const Index = ({books}) => {
+import { useSelector } from "react-redux";
+const Index = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [show, setShow] = useState(true);
 
+  const books = useSelector((state) => state.books.bookList);
   const itemsPerPage = BOOKS_PER_PAGE;
   const startingIndex = currentPage * itemsPerPage;
-  const currentBooks = books.slice(
-    startingIndex,
-    startingIndex + itemsPerPage,
-  );
+  const currentBooks = books.slice(startingIndex, startingIndex + itemsPerPage);
   const pageCount = Math.ceil(books.length / itemsPerPage);
 
   const handlePageClick = (selectedPage) => {
