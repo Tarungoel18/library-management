@@ -26,7 +26,7 @@ const BookDetails = () => {
 
   const [isFormValid, setIsFormValid] = useState(false);
   const [bookName, dispatchBookName] = useReducer(nameReducer, "");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const timer = useRef(null);
 
   useEffect(() => {
@@ -36,6 +36,15 @@ const BookDetails = () => {
       }
     };
   }, []);
+
+  const validateForm = (currentFormData, currentBookName) => {
+    return (
+      currentFormData.id.trim() !== "" &&
+      Number(currentFormData.id) >= 0 &&
+      currentBookName.trim().length >= 3 &&
+      currentFormData.author.trim().length >= 3
+    );
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,6 +62,17 @@ const BookDetails = () => {
   const handleBlur = (field) => {
     setTouched((prev) => ({ ...prev, [field]: true }));
   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const newFormData = { ...formData, [name]: value };
+    setFormData(newFormData);
+
+    if (timer.current) clearTimeout(timer.current);
+
+    timer.current = setTimeout(() => {
+      setIsFormValid(validateForm(newFormData, bookName));
+    }, 500);
+  };
 
   const handleNameChange = (e) => {
     const value = e.target.value;
@@ -61,33 +81,7 @@ const BookDetails = () => {
     if (timer.current) clearTimeout(timer.current);
 
     timer.current = setTimeout(() => {
-      const valid =
-        formData.id.trim() !== "" &&
-        Number(formData.id) >= 0 &&
-        value.trim().length >= 3 &&
-        formData.author.trim().length >= 3;
-
-      setIsFormValid(valid);
-    }, 500);
-  };
-
-  //TODO :- Common Fun for validation
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    const newFormData = { ...formData, [name]: value };
-    setFormData(newFormData);
-    if (timer.current) {
-      clearTimeout(timer.current);
-    }
-    timer.current = setTimeout(() => {
-      const valid =
-        newFormData.id.trim() !== "" &&
-        Number(newFormData.id) >= 0 &&
-        bookName.trim().length >= 3 &&
-        newFormData.author.trim().length >= 3;
-
-      setIsFormValid(valid);
+      setIsFormValid(validateForm(formData, value));
     }, 500);
   };
 
