@@ -37,6 +37,22 @@ const BookDetails = () => {
     };
   }, []);
 
+  const getErrorMessage = (fieldName, value) => {
+    if (!value || value.trim() === "") {
+      return `${fieldName} is required`;
+    }
+
+    if (value.trim().length < 3 && fieldName !== "Book ID") {
+      return `${fieldName} must be at least 3 characters`;
+    }
+
+    if (fieldName === "Book ID" && Number(value) < 0) {
+      return `Book ID cannot be negative`;
+    }
+
+    return "";
+  };
+
   const validateForm = (currentFormData, currentBookName) => {
     return (
       currentFormData.id.trim() !== "" &&
@@ -104,12 +120,11 @@ const BookDetails = () => {
               onChange={handleChange}
               onBlur={() => handleBlur("id")}
             />
-            {touched.id &&
-              (!formData.id ? (
-                <div className="text-danger">Book ID is required</div>
-              ) : formData.id < 0 ? (
-                <div className="text-danger">Book ID cannot be negative</div>
-              ) : null)}
+            {touched.id && (
+              <div className="text-danger">
+                {getErrorMessage("Book ID", formData.id)}
+              </div>
+            )}
           </div>
         </div>
 
@@ -127,14 +142,11 @@ const BookDetails = () => {
               onChange={handleNameChange}
               onBlur={() => handleBlur("name")}
             />
-            {touched.name &&
-              (!bookName ? (
-                <div className="text-danger">Book Name is required</div>
-              ) : bookName.length < 3 ? (
-                <div className="text-danger">
-                  Book Name must be at least 3 characters
-                </div>
-              ) : null)}
+            {touched.name && (
+              <div className="text-danger">
+                {getErrorMessage("Book Name", bookName)}
+              </div>
+            )}
           </div>
         </div>
 
@@ -152,14 +164,11 @@ const BookDetails = () => {
               onChange={handleChange}
               onBlur={() => handleBlur("author")}
             />
-            {touched.author &&
-              (!formData.author ? (
-                <div className="text-danger">Author Name is required</div>
-              ) : formData.author.length < 3 ? (
-                <div className="text-danger">
-                  Author Name must be at least 3 characters
-                </div>
-              ) : null)}
+            {touched.author && (
+              <div className="text-danger">
+                {getErrorMessage("Author", formData.author)}
+              </div>
+            )}
           </div>
         </div>
 
