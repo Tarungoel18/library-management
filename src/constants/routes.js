@@ -3,5 +3,6 @@ export const ROUTES = {
   STUDENT: "/student-list",
   ALL_STUDENTS: "/all-students",
   USER_LIST: "/user-list",
-  PRACTICE: "/practice"
+  PRACTICE: "/practice",
+  DASHBOARD: "/dashboard"
 };
