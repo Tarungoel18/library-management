@@ -5,7 +5,7 @@ import { loginSuccess } from "../../redux/slice/authSlice.js";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "./service.js";
 
-const Index = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -73,4 +73,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Login;

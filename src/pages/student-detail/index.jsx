@@ -1,7 +1,7 @@
 import "./student.css"
 import studentData from "../../data/studentsList.json";
 import { useParams } from "react-router-dom";
-const Index = () => {
+const StudentDetail = () => {
   const {id} = useParams();
   const student = studentData[id-1];
   return (
@@ -25,4 +25,4 @@ const Index = () => {
   );
 }
 
-export default Index;
+export default StudentDetail;

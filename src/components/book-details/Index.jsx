@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import "./book-details.css";
 import { addBook } from "../../redux/slice/bookSlice.js";
-const Index = () => {
+const BookDetails = () => {
   const [formData, setFormData] = useState({
     id: "",
     author: "",
@@ -183,4 +183,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default BookDetails;

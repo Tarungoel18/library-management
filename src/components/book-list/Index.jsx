@@ -1,4 +1,4 @@
-import Table from "../table/Index.jsx";
+import Table from "../table/index.jsx";
 import ReactPaginate from "react-paginate";
 import {
   BOOKS_PER_PAGE,
@@ -7,7 +7,7 @@ import {
 } from "../../constants/AppConst.js";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-const Index = () => {
+const BookList = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [show, setShow] = useState(true);
 
@@ -82,4 +82,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default BookList;

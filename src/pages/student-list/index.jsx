@@ -1,4 +1,4 @@
-import Table from "../../components/table/Index.jsx";
+import Table from "../../components/table/index.jsx";
 import studentData from "../../data/studentsList.json";
 import ReactPaginate from "react-paginate";
 import {

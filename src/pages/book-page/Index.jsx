@@ -1,17 +1,17 @@
 import { useState } from "react";
-import bookData from "../../data/bookslist.json"
-import BookDetails from "../../components/book-details/Index.jsx"
-import BookList from "../../components/book-list/Index.jsx"
+import bookData from "../../data/bookslist.json";
+import BookDetails from "../../components/book-details/index.jsx";
+import BookList from "../../components/book-list/index.jsx";
 
-const Index = () => {
-    const [books, setBooks] = useState(bookData);
+const BookPage = () => {
+  const [books, setBooks] = useState(bookData);
 
   return (
-     <>
+    <>
       <BookDetails setBooks={setBooks} />
       <BookList books={books} />
     </>
-  )
-}
+  );
+};
 
-export default Index
+export default BookPage;

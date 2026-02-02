@@ -4,10 +4,10 @@ import AppLayout from "../layout/AppLayout.jsx";
 import { ROUTES } from "../constants/routes.js";
 import ProtectedRoute from "../components/protected-route/index.jsx";
 
-const StudentList = lazy(() => import("../pages/student-list/Index.jsx"));
-const StudentDetail = lazy(() => import("../pages/student-detail/Index.jsx"));
-const NotFound = lazy(() => import("../pages/not-found/Index.jsx"));
-const BookPage = lazy(() => import("../pages/book-page/Index.jsx"));
+const StudentList = lazy(() => import("../pages/student-list/index.jsx"));
+const StudentDetail = lazy(() => import("../pages/student-detail/index.jsx"));
+const NotFound = lazy(() => import("../pages/not-found/index.jsx"));
+const BookPage = lazy(() => import("../pages/book-page/index.jsx"));
 const UserList = lazy(() => import("../pages/user-list/index.jsx"));
 const Practice = lazy(() => import("../pages/practice/index.jsx"));
 const Dashboard = lazy(() => import("../pages/dashboard/index.jsx"));

@@ -1,12 +1,12 @@
-import BookList from "../../components/book-list/Index.jsx";
-import StudentList from "../student-list/Index.jsx";
-const Index = () => {
+import BookList from "../../components/book-list/index.jsx";
+import StudentList from "../student-list/index.jsx";
+const Dashboard = () => {
   return (
     <>
-        <BookList/>
-        <StudentList/>
+      <BookList />
+      <StudentList />
     </>
-  )
-}
+  );
+};
 
-export default Index
+export default Dashboard;

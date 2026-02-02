@@ -1,7 +1,7 @@
 import "./table.css";
 import { Link } from "react-router-dom";
 import {ROUTES} from "../../constants/routes.js"
-const Index = ({ columns, data, isBook}) => {
+const Table = ({ columns, data, isBook}) => {
   return (
     <>
       <table className="table table-hover caption-top mb-0 ">
@@ -40,4 +40,4 @@ const Index = ({ columns, data, isBook}) => {
   );
 };
 
-export default Index;
+export default Table;
